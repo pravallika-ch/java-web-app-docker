@@ -1,0 +1,20 @@
+version: '3'
+services:
+ javawebapp:
+    image: pravallika7824/java-web-app
+    ports:
+    - 8080:8080
+    container_name: javawebapp
+    deploy:
+      replicas: 2
+      update_config:
+        parallelism: 1
+        delay: 20s
+      restart_ploicy:
+        condition: on-failure
+        max_attempts: 5
+volumes:
+  mongodbbkp:
+    external: true
+network:
+  
